@@ -1,4 +1,4 @@
-# cpoint
+# admin-example-app
 
 ## Project setup
 ```
