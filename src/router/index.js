@@ -1,20 +1,85 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-
+import MainLayout from '../layout/MainLayout.vue'
+import Profile from '../views/Profile.vue'
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    component: MainLayout,
+    children: [
+      {
+        path: '/',
+        name: 'home',
+        component: HomeView
+      },
+      {
+        path: '/profile',
+        name: 'profil',
+        component: Profile
+      },
+   
+      {
+        path: '/domaininfo',
+        name: 'domaininfo',
+        component: function () {
+          return import('../views/Domain/DomainInfo.vue')
+        }
+      },
+      {
+        path: '/about',
+        name: 'about',
+        component: function () {
+          return import('../views/AboutView.vue')
+        }
+      },
+      
+      {
+        path: '/gallery',
+        name: 'gallery',
+        component: function () {
+          return import('../views/Gallery.vue')
+        }
+      },
+     
+      {
+        path: '/calender',
+        name: 'calender',
+        component: function () {
+          return import('../views/Calendar.vue')
+        }
+      },
+      {
+        path: '/UOM',
+        name: 'components',
+        component: function () {
+          return import('../components/Constraction/Unit Of Management.vue')
+        }
+      },
+      {
+        path: '/testing',
+        name: 'testing',
+        component: function () {
+          return import('../views/Testing.vue')
+        }
+      },
+
+    ]
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/login',
+    name: 'login',
+    component: function () {
+      return import('../views/LoginView.vue')
+    }
+  },
+  {
+    path: '/registration',
+    name: '/registration',
+    component: function () {
+      return import('../views/Registration.vue')
+    }
+  },
+  
 ]
 
 const router = createRouter({
