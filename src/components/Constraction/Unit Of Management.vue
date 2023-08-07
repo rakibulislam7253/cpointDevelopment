@@ -30,18 +30,18 @@
                                                     <div v-for="searchitems in searchitem" :key="searchitems.id">
                                                         <div v-if="detailsAreVisible">
 
-                                                            <div  class="form-group">
+                                                            <div class="form-group">
                                                                 <!-- <label>User Name</label> -->
                                                                 <!-- <input type="text" style="margin-top: -5px"
                                                                     class="form-control form-control-sm" id="addName"
                                                                     v-model="addName" placeholder="User Name...." /> -->
 
-                                                                <p v-if!="detailsAreVisible" id="addName" :value="addName"
+                                                                <p v-if!="detailsAreVisible" id="addName" :v-bind="addName"
                                                                     style="width:100%; height:auto; border:2px solid rgb(235, 231, 231)">
                                                                     {{ searchitems.name }}</p>
                                                             </div>
 
-                                                            <div  class="form-group">
+                                                            <div class="form-group">
                                                                 <!-- <label>Email</label> -->
                                                                 <!-- <input type="text" style="margin-top:-5px"
                                                                     class="form-control  form-control-sm" id="addEmail"
@@ -71,19 +71,13 @@
                                                                 <option>Officer</option>
                                                                 <option>SO</option>
                                                                 <option>EO</option>
-                                                                -
                                                             </select>
                                                             <div class="select_arrow"></div>
                                                         </div>
                                                         <p>show data : {{ addDomain }}</p>
                                                     </div>
-
-
                                                 </div>
-
-
                                                 <div>
-
                                                 </div>
                                             </div>
                                         </form>
