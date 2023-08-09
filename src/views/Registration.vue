@@ -15,14 +15,14 @@
                                         <form @submit.prevent="submittedSignUp" >
                                             <div class="row clearfix" style="margin-top:-18px">
                                                 <div class="col_half">
-                                                    <div class="input_field">
+                                                    <div class="input_field" style="width:105%">
                                                         <span><i aria-hidden="true" class="fa fa-user"></i></span>
                                                         <input type="text" v-model="firstName" name="FirstName"
                                                             placeholder="First Name" />
                                                     </div>
                                                 </div>
                                                 <div class="col_half">
-                                                    <div class="input_field">
+                                                    <div class="input_field" style="width:105%;margin-left:-10px " >
                                                         <span><i aria-hidden="true" class="fa fa-user"></i></span>
                                                         <input type="text" v-model="lastName" name="LastName"
                                                             placeholder="Last Name" required />
