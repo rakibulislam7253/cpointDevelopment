@@ -2,101 +2,98 @@
     <div class="background">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <div class=" my-5">
+                <div class="my-5">
                     <div class="card-body cardbody-color">
                         <div class="text-center my-4">
                             <img src="../assets/logo/Logo.png" class="w-50" style="margin-bottom: 60px" alt="profile" />
                         </div>
                         <!-- INPUT WITH EMAIL -->
-                        <div class="form_wrapper">
-                            <div class="form_container">
-
+                        <div class="form_wrapper" >
+                            <div class="form_container" style="margin-top:-25px">
                                 <div class="row clearfix">
                                     <div class="">
-                                        <form @submit.prevent="submittedSignUp">
-                                            <div class="row clearfix">
+                                        <form @submit.prevent="submittedSignUp" >
+                                            <div class="row clearfix" style="margin-top:-18px">
                                                 <div class="col_half">
-                                                    <div class="input_field"> <span><i aria-hidden="true"
-                                                                class="fa fa-user"></i></span>
-                                                        <input type="text" v-model="userName" name="userName"
-                                                            placeholder="User Name" />
+                                                    <div class="input_field">
+                                                        <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                                        <input type="text" v-model="firstName" name="FirstName"
+                                                            placeholder="First Name" />
                                                     </div>
                                                 </div>
                                                 <div class="col_half">
-                                                    <div class="input_field"> <span><i aria-hidden="true"
-                                                                class="fa fa-user"></i></span>
-                                                        <input type="text" v-model="fullName" name="FullName"
-                                                            placeholder="Full Name" required />
+                                                    <div class="input_field">
+                                                        <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                                        <input type="text" v-model="lastName" name="LastName"
+                                                            placeholder="Last Name" required />
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="input_field"> <span><i aria-hidden="true"
-                                                        class="fa fa-envelope"></i></span>
+                                            <div class="input_field" style="margin-top:-17px">
+                                                <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                                <input type="text" v-model="userName" name="User Name"
+                                                    placeholder="User Name" required />
+                                            </div>
+                                            <div class="input_field" style="margin-top:-10px">
+                                                <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
                                                 <input type="email" v-model="email" name="email" placeholder="Email"
                                                     required />
                                             </div>
-
-                                            <div class="input_field select_option">
+                                            <!-- department -->
+                                            <div class="input_field select_option" style="margin-top:-10px">
                                                 <select v-model="selectedDepartment">
                                                     <option disabled value="">Department</option>
-                                                    <option>Alternate Delivery Channel</option>
-                                                    <option>Anti Money Laundering Division</option>
-                                                    <option>Board Division</option>
-                                                    <option>Business Division</option>
-                                                    <option>Call Center</option>
-                                                    <option>Card Division</option>
-                                                    <option>Corporate Liability Management Department</option>
-                                                    <option>Credit Administration Department</option>
-                                                    <option>Credit Risk Management Division</option>
-                                                    <option>Cyber Security and MIS Department</option>
-                                                    <option>Doctor</option>
-                                                    <option>Financial Administration Division</option>
-                                                    <option>General Service & Logistics Division</option>
-                                                    <option>Human Resources Division</option>
-                                                    <option>Information & Communication Technology Division</option>
-                                                    <option>International Division & NRB</option>
-                                                    <option>Internal Control & Compliance Division</option>
-                                                    <option>MSME Business Division</option>
-                                                    <option>Office of MD & CEO</option>
-                                                    <option>Operations & General Banking Division</option>
-                                                    <option>Public Relations Division</option>
-                                                    <option>Retail Business</option>
-                                                    <option>Risk Management Division</option>
-                                                    <option>Trade Service Division</option>
-                                                    <option>Treasury & Market Risk(Mid Office)</option>
-                                                    <option>Treasury Back Office Operations Department</option>
+                                                    <option v-for="item in data" :key="item.id">
+                                                        {{ item.department_name }}
+                                                    </option>
                                                 </select>
                                                 <div class="select_arrow"></div>
                                             </div>
 
-                                            <div class="input_field select_option">
-                                                <select v-model="selectedDesignation">
+                                            <!-- Designation -->
+                                            <div class="input_field select_option" style="margin-top:-10px">
+                                                <select v-model="selectedModule">
                                                     <option disabled value="">Designation</option>
-                                                    <option>TO</option>
-                                                    <option>JO</option>
-                                                    <option>AO</option>
-                                                    <option>Officer</option>
-                                                    <option>SO</option>
-                                                    <option>EO</option>
-                                                    <option>SEO</option>
-                                                    <option>JAVP</option>
-                                                    <option>AVP</option>
-                                                    <option>SAVP</option>
-                                                    <option>VP</option>
-                                                    <option>FVP</option>
-                                                    <option>SVP</option>
-                                                    <option>EVP</option>
-                                                    <option>SEVP</option>
-                                                    <option>DMD</option>
-                                                    <option>AMD</option>
-                                                    <option>MD</option>
+                                                    <option v-for="item in designation" :key="item.id">
+                                                        {{ item.designation_name }}
+                                                    </option>
+                                                </select>
+                                                <div class="select_arrow"></div>
+                                            </div>
+                                            <!-- role -->
+                                            <div class="input_field select_option" style="margin-top:-10px">
+                                                <select v-model="selectedRole">
+                                                    <option disabled value="">Role</option>
+                                                    <option v-for="item in role" :key="item.id">
+                                                        {{ item.name }}
+                                                    </option>
+                                                </select>
+                                                <div class="select_arrow"></div>
+                                            </div>
+                                            <!-- Module -->
+                                            <div class="input_field select_option" style="margin-top:-10px">
+                                                <select v-model="selectedDesignation">
+                                                    <option disabled value="">Module_name</option>
+                                                    <option v-for="item in moduledata" :key="item.id">
+                                                        {{ item.module_name }}
+                                                    </option>
+                                                </select>
+                                                <div class="select_arrow"></div>
+                                            </div>
+                                            <!-- branch -->
+                                            <div class="input_field select_option" style="margin-top:-10px">
+                                                <select v-model="selectBranch">
+                                                    <option disabled value="">Branch</option>
+                                                    <option v-for="item in branch" :key="item.id">
+                                                        {{ item.branch_name }} {{ item.branch_id }}
+                                                    </option>
                                                 </select>
                                                 <div class="select_arrow"></div>
                                             </div>
 
-                                            <div class="input_field"> <span><i aria-hidden="true"
-                                                        class="fa fa-lock"></i></span>
+                                            <div class="input_field" style="margin-top:-10px">
+                                                <span><i aria-hidden="true" class="fa fa-lock"></i></span>
                                                 <input type="password" v-model="password" name="password"
                                                     placeholder="Password" required />
                                             </div>
@@ -107,9 +104,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="credit ">Already have an account? <a href="/login">Sign In</a></p>
-
-
+                        <p class="credit" style="margin-top:-15px">Already have an account? <a href="/login">Sign In</a></p>
                     </div>
                 </div>
             </div>
@@ -117,60 +112,107 @@
     </div>
 </template>
 
-
-
-
 <script>
-import router from '@/router';
 export default {
-    name: 'registration',
+    name: "registration",
+
     data() {
         return {
+            // fetch data variable
+            data: null,
+            designation: null,
+            role: null,
+            moduledata: null,
+            branch: null,
+            firstName: "",
+            lastName: "",
             userName: "",
-            fullName: "",
             email: "",
             password: "",
             selectedDepartment: "",
+            selectedRole: "",
+            selectedModule: "",
             selectedDesignation: "",
+            selectBranch: ""
         };
     },
 
+    mounted() {
+        // Department
+        fetch("http://10.140.2.35/cPoint/api/Department/get-department_list")
+            .then((response) => response.json())
+            .then((data) => {
+                this.data = data;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
 
-    methods: {
+        // Designation
+        fetch("http://10.140.2.35/cPoint/api/Designation/get-designation_list")
+            .then((response) => response.json())
+            .then((data) => {
+                this.designation = data;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
 
-        submittedSignUp() {
-            const data = {
-                userName: this.userName,
-                fullName: this.fullName,
-                email: this.email,
-                Designation: this.selectedDesignation,
-                Department: this.selectedDepartment
-
-            }
-
-            console.log(data);
-        
-        }
-
+        // Role
+        fetch("http://10.140.2.35/cPoint/api/Role/get_roles")
+            .then((response) => response.json())
+            .then((data) => {
+                this.role = data;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        // module
+        fetch("http://10.140.2.35/cPoint/api/Module/get-module_list")
+            .then((response) => response.json())
+            .then((data) => {
+                this.moduledata = data;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        // branch
+        fetch("http://10.140.2.35/cPoint/api/Branch/get-branch_by_name")
+            .then((response) => response.json())
+            .then((data) => {
+                this.branch = data;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     },
 
-}
+    methods: {
+        submittedSignUp() {
+            const data = {
+                firstName: this.firstName,
+                lastName: this.lastName,
+                userName: this.userName,
+                email: this.email,
+                Designation: this.selectedDesignation,
+                Role: this.selectedRole,
+                Department: this.selectedDepartment,
+                Branch: this.selectBranch,
+            };
 
-
-
+            console.log(data);
+        },
+    },
+};
 </script>
 
-
-
-
-
 <style>
-body {
+/* body {
     overflow-y: hidden;
-    /* Hide vertical scrollbar */
+    Hide vertical scrollbar
     overflow-x: hidden;
-    /* Hide horizontal scrollbar */
-}
+    Hide horizontal scrollbar
+} */
 
 .card-body {
     background-color: rgb(255, 255, 255);
@@ -195,8 +237,6 @@ body {
     min-height: 100vh;
 }
 
-
-
 .clearfix:after {
     content: "";
     display: block;
@@ -204,9 +244,6 @@ body {
     visibility: hidden;
     height: 0;
 }
-
-
-
 
 .clearfix:after {
     content: "";
@@ -227,9 +264,9 @@ body {
     position: relative;
     z-index: 1;
     /* border-top: 5px solid #f5ba1a; */
-    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    /* -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1); */
+    /* -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1); */
+    /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.1); */
     -webkit-transform-origin: 50% 0%;
     transform-origin: 50% 0%;
     -webkit-transform: scale3d(1, 1, 1);
@@ -303,9 +340,9 @@ body {
     padding-top: 10px;
 }
 
-.form_wrapper input[type=text],
-.form_wrapper input[type=email],
-.form_wrapper input[type=password] {
+.form_wrapper input[type="text"],
+.form_wrapper input[type="email"],
+.form_wrapper input[type="password"] {
     width: 100%;
     padding: 8px 10px 9px 35px;
     height: 35px;
@@ -318,15 +355,15 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-.form_wrapper input[type=text]:hover,
-.form_wrapper input[type=email]:hover,
-.form_wrapper input[type=password]:hover {
+.form_wrapper input[type="text"]:hover,
+.form_wrapper input[type="email"]:hover,
+.form_wrapper input[type="password"]:hover {
     background: #fafafa;
 }
 
-.form_wrapper input[type=text]:focus,
-.form_wrapper input[type=email]:focus,
-.form_wrapper input[type=password]:focus {
+.form_wrapper input[type="text"]:focus,
+.form_wrapper input[type="email"]:focus,
+.form_wrapper input[type="password"]:focus {
     -webkit-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
     -moz-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
     box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
@@ -334,7 +371,7 @@ body {
     background: #fafafa;
 }
 
-.form_wrapper input[type=submit] {
+.form_wrapper input[type="submit"] {
     background: #049e3f;
     height: 35px;
     line-height: 35px;
@@ -352,16 +389,16 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
-.form_wrapper input[type=submit]:hover {
+.form_wrapper input[type="submit"]:hover {
     background: #049e3f;
 }
 
-.form_wrapper input[type=submit]:focus {
+.form_wrapper input[type="submit"]:focus {
     background: #049e3f;
 }
 
-.form_wrapper input[type=checkbox],
-.form_wrapper input[type=radio] {
+.form_wrapper input[type="checkbox"],
+.form_wrapper input[type="radio"] {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -675,4 +712,5 @@ body {
     .remember_me {
         padding-bottom: 20px;
     }
-}</style>
+}
+</style>
