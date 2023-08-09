@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="credit" style="margin-top:-15px">Already have an account? <a href="/login">Sign In</a></p>
+                        <!-- <p class="credit" style="margin-top:-15px">Already have an account? <a href="/login">Sign In</a></p> -->
                     </div>
                 </div>
             </div>
@@ -207,12 +207,12 @@ export default {
 </script>
 
 <style>
-/* body {
+body {
     overflow-y: hidden;
-    Hide vertical scrollbar
+    /* Hide vertical scrollbar */
     overflow-x: hidden;
-    Hide horizontal scrollbar
-} */
+    /* Hide horizontal scrollbar */
+}
 
 .card-body {
     background-color: rgb(255, 255, 255);
