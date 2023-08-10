@@ -4,103 +4,108 @@
             <div class="col-md-6 offset-md-3">
                 <div class="my-5">
                     <div class="card-body cardbody-color">
-                        <div class="text-center my-4">
+                        <div class="text-center my-2">
                             <img src="../assets/logo/Logo.png" class="w-50" style="margin-bottom: 60px" alt="profile" />
                         </div>
                         <!-- INPUT WITH EMAIL -->
-                        <div class="form_wrapper" >
+                        <div class="form_wrapper">
                             <div class="form_container" style="margin-top:-25px">
                                 <div class="row clearfix">
                                     <div class="">
-                                        <form @submit.prevent="submittedSignUp" >
-                                            <div class="row clearfix" style="margin-top:-18px">
-                                                <div class="col_half">
-                                                    <div class="input_field" style="width:105%">
-                                                        <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                                                        <input type="text" v-model="firstName" name="FirstName"
-                                                            placeholder="First Name" />
-                                                    </div>
-                                                </div>
-                                                <div class="col_half">
-                                                    <div class="input_field" style="width:105%;margin-left:-10px " >
-                                                        <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                                                        <input type="text" v-model="lastName" name="LastName"
-                                                            placeholder="Last Name" required />
-                                                    </div>
+                                        <!-- @submit.prevent="submittedSignUp" -->
+                                        <!-- <form> -->
+                                        <div class="row clearfix" style="margin-top:-18px">
+                                            <div class="col_half">
+                                                <div class="input_field" style="width:105%">
+                                                    <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                                    <input type="text" v-model="firstName" name="firstName"
+                                                        placeholder="First Name" required />
                                                 </div>
                                             </div>
+                                            <div class="col_half">
+                                                <div class="input_field" style="width:105%;margin-left:-10px ">
+                                                    <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                                    <input type="text" v-model="lastName" name="lastName"
+                                                        placeholder="Last Name" />
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                            <div class="input_field" style="margin-top:-17px">
-                                                <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                                                <input type="text" v-model="userName" name="User Name"
-                                                    placeholder="User Name" required />
-                                            </div>
-                                            <div class="input_field" style="margin-top:-10px">
-                                                <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                                                <input type="email" v-model="email" name="email" placeholder="Email"
-                                                    required />
-                                            </div>
-                                            <!-- department -->
-                                            <div class="input_field select_option" style="margin-top:-10px">
-                                                <select v-model="selectedDepartment">
-                                                    <option disabled value="">Department</option>
-                                                    <option v-for="item in data" :key="item.id">
-                                                        {{ item.department_name }}
-                                                    </option>
-                                                </select>
-                                                <div class="select_arrow"></div>
-                                            </div>
+                                        <div class="input_field" style="margin-top:-17px">
+                                            <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                            <input type="text" v-model="userName" name="userName" placeholder="User Name" />
+                                        </div>
+                                        <div class="input_field" style="margin-top:-10px">
+                                            <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                                            <input type="email" v-model="email" name="email" placeholder="Email" />
+                                        </div>
+                                        <!-- password -->
+                                        <div class="input_field" style="margin-top:-10px">
+                                            <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                                            <input type="password" v-model="password" name="password"
+                                                placeholder="Password" />
+                                        </div>
+                                        <!-- department -->
+                                        <div class="input_field select_option" style="margin-top:-10px">
+                                            <select v-model="departmentId" name="departmentId">
+                                                <option disabled value="">Department</option>
+                                                <option v-for="item in data" :key="item.id">
+                                                    {{ item.id }}
+                                                </option>
+                                            </select>
+                                            <div class="select_arrow"></div>
+                                        </div>
 
-                                            <!-- Designation -->
-                                            <div class="input_field select_option" style="margin-top:-10px">
-                                                <select v-model="selectedModule">
-                                                    <option disabled value="">Designation</option>
-                                                    <option v-for="item in designation" :key="item.id">
-                                                        {{ item.designation_name }}
-                                                    </option>
-                                                </select>
-                                                <div class="select_arrow"></div>
-                                            </div>
-                                            <!-- role -->
-                                            <div class="input_field select_option" style="margin-top:-10px">
-                                                <select v-model="selectedRole">
-                                                    <option disabled value="">Role</option>
-                                                    <option v-for="item in role" :key="item.id">
-                                                        {{ item.name }}
-                                                    </option>
-                                                </select>
-                                                <div class="select_arrow"></div>
-                                            </div>
-                                            <!-- Module -->
-                                            <div class="input_field select_option" style="margin-top:-10px">
-                                                <select v-model="selectedDesignation">
-                                                    <option disabled value="">Module_name</option>
-                                                    <option v-for="item in moduledata" :key="item.id">
-                                                        {{ item.module_name }}
-                                                    </option>
-                                                </select>
-                                                <div class="select_arrow"></div>
-                                            </div>
-                                            <!-- branch -->
-                                            <div class="input_field select_option" style="margin-top:-10px">
-                                                <select v-model="selectBranch">
-                                                    <option disabled value="">Branch</option>
-                                                    <option v-for="item in branch" :key="item.id">
-                                                        {{ item.branch_name }} {{ item.branch_id }}
-                                                    </option>
-                                                </select>
-                                                <div class="select_arrow"></div>
-                                            </div>
+                                        <!-- Designation -->
+                                        <div class="input_field select_option" style="margin-top:-10px">
+                                            <select v-model="moduleId" name="moduleId">
+                                                <option disabled value="">Designation</option>
+                                                <option v-for="item in designation" :key="item.id">
+                                                    {{ item.id }}
+                                                </option>
+                                            </select>
+                                            <div class="select_arrow"></div>
+                                        </div>
+                                        <!-- role -->
+                                        <div class="input_field select_option" style="margin-top:-10px">
+                                            <select v-model="roleId" name="roleId">
+                                                <option disabled value="">Role</option>
+                                                <option v-for="item in role" :key="item.id">
+                                                    {{ item.name }}
+                                                </option>
+                                            </select>
+                                            <div class="select_arrow"></div>
+                                        </div>
+                                        <!-- Module -->
+                                        <div class="input_field select_option" style="margin-top:-10px">
+                                            <select v-model="designationId" name="designationId">
+                                                <option disabled value="">Module_name</option>
+                                                <option v-for="item in moduledata" :key="item.id">
+                                                    {{ item.module_id }}
+                                                </option>
+                                            </select>
+                                            <div class="select_arrow"></div>
+                                        </div>
+                                        <!-- branch -->
+                                        <div class="input_field select_option" style="margin-top:-10px">
+                                            <select v-model="branchId" name="branchId">
+                                                <option disabled value="">Branch</option>
+                                                <option v-for="item in branch" :key="item.id">
+                                                    {{ item.branch_id }}
+                                                </option>
+                                            </select>
+                                            <div class="select_arrow"></div>
+                                        </div>
 
-                                            <div class="input_field" style="margin-top:-10px">
-                                                <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                                                <input type="password" v-model="password" name="password"
-                                                    placeholder="Password" required />
-                                            </div>
 
-                                            <input class="button" type="submit" value="Sign Up" />
-                                        </form>
+                                        <button type="button" v-on:click="submittedSignUp()"
+                                            class="btn btn-color btn-success btn-sm mb-2 w-100">sign up
+                                        </button>
+
+                                        <!-- <input class="button" type="submit" value="Sign Up" /> -->
+                                        <!-- </form> -->
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -112,13 +117,20 @@
     </div>
 </template>
 
+
+
+
+
 <script>
+import axios from 'axios';
 export default {
     name: "registration",
 
     data() {
         return {
             // fetch data variable
+
+
             data: null,
             designation: null,
             role: null,
@@ -129,11 +141,11 @@ export default {
             userName: "",
             email: "",
             password: "",
-            selectedDepartment: "",
-            selectedRole: "",
-            selectedModule: "",
-            selectedDesignation: "",
-            selectBranch: ""
+            departmentId: "",
+            roleId: "",
+            designationId: "",
+            moduleId: "",
+            branchId: ""
         };
     },
 
@@ -177,7 +189,7 @@ export default {
                 console.error(error);
             });
         // branch
-        fetch("http://10.140.2.35/cPoint/api/Branch/get-branch_by_name")
+        fetch("http://10.140.2.35/cPoint/api/Branch/get-branch_list")
             .then((response) => response.json())
             .then((data) => {
                 this.branch = data;
@@ -187,24 +199,87 @@ export default {
             });
     },
 
-    methods: {
-        submittedSignUp() {
-            const data = {
-                firstName: this.firstName,
-                lastName: this.lastName,
-                userName: this.userName,
-                email: this.email,
-                Designation: this.selectedDesignation,
-                Role: this.selectedRole,
-                Department: this.selectedDepartment,
-                Branch: this.selectBranch,
-            };
 
-            console.log(data);
+    methods: {
+
+        async submittedSignUp() {
+            if (this.firstName && this.email && this.userName && this.departmentId && this.branchId) {
+                let response = await axios.post('http://10.140.2.35/cPoint/api/Account/register', {
+                    firstName: this.firstName,
+                    lastName: this.lastName,
+                    userName: this.userName,
+                    email: this.email,
+                    password: this.password,
+                    departmentId: this.departmentId,
+                    roleId: this.roleId,
+                    designationId: this.designationId,
+                    moduleId: this.moduleId,
+                    branchId: this.branchId,
+
+
+
+                });
+                console.warn(response);
+                localStorage.setItem('user', JSON.stringify(response))
+
+
+                this.$router.push('/login');
+
+                alert("Successfully Login")
+
+
+            }
+            else {
+                 alert("Please submit your Information")
+                // class'swalDefaultError'
+            }
+
         },
     },
+
+
+    // console.log(this.firstName);
 };
+
+
+
+$(function () {
+    var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
+
+    $('.swalDefaultSuccess').click(function () {
+        Toast.fire({
+            icon: 'success',
+            title: 'Successfully Log in.'
+        })
+    });
+
+
+    $('.swalDefaultError').click(function () {
+        Toast.fire({
+            icon: 'error',
+            title: 'Faild Registration.'
+        })
+    });
+});
+
+
+
+
+
+
+
+
+
+
 </script>
+
+
+
 
 <style>
 body {
@@ -216,10 +291,10 @@ body {
 
 .card-body {
     background-color: rgb(255, 255, 255);
-    border: 2px solid green;
-    width: 60%;
-    margin-left: 100px;
-    margin-top: 5%;
+    border: 5px solid #bb0e0e;
+    width: 65%;
+    margin-left: 110px;
+    margin-top: 6%;
     border-radius: 5px;
     /* height: 20px; */
 }
@@ -259,7 +334,7 @@ body {
     max-width: 100%;
     box-sizing: border-box;
     padding: 25px;
-    margin-left: 3%;
+    margin-left: 7%;
     margin-top: -7%;
     position: relative;
     z-index: 1;

@@ -84,9 +84,9 @@
                     <Navitem icon="fas fa-info-circle" link="/login">
                         Login
                     </Navitem>
-                    <Navitem icon="fas fa-info-circle" link="/registration">
+                    <!-- <Navitem icon="fas fa-info-circle" link="/registration">
                         Sign Up
-                    </Navitem>
+                    </Navitem> -->
 
                     <Navitem icon="far fa-object-ungroup nav-icon" link="/gallery">
                         Gallery
