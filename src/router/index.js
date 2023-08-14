@@ -62,6 +62,13 @@ const routes = [
           return import('../views/Testing.vue')
         }
       },
+      {
+        path: '/branch',
+        name: '/branch',
+        component: function () {
+          return import('../components/Branch/Branch.vue')
+        }
+      },
 
     ]
   },
@@ -79,6 +86,7 @@ const routes = [
       return import('../views/Registration.vue')
     }
   },
+ 
   
 ]
 

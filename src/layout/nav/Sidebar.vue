@@ -91,12 +91,19 @@
                     <Navitem icon="far fa-object-ungroup nav-icon" link="/gallery">
                         Gallery
                     </Navitem>
+
                     <Navitem icon="fas fa-info-circle" link="/datatable">
                         DataTable
                     </Navitem>
+                    
                     <Navitem icon="fas  fa-calendar" style="color: #497ad0;" link="/calender">
                         Calender
                     </Navitem>
+
+                    <Navitem icon="fas  fa-calendar" style="color: #497ad0;" link="/branch">
+                        Branch
+                    </Navitem>
+                   
                     
                     <Navitem icon="fas  fa-calendar" style="color: #497ad0;" link="/testing">
                         Testing

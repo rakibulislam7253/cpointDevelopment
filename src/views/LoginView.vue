@@ -109,7 +109,7 @@ export default {
 
         async submitFormAd() {
 
-            let response = await axios.post('loginWithAd', {
+            let response =await axios.post('loginWithAd', {
                 userName: this.userName,
                  password: this.password,
 

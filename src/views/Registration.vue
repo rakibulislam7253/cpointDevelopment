@@ -50,7 +50,7 @@
                                             <select v-model="departmentId" name="departmentId">
                                                 <option disabled value="">Department</option>
                                                 <option v-for="item in data" :key="item.id">
-                                                    {{ item.id }}
+                                                    {{ item.id }} {{ item.department_name }}
                                                 </option>
                                             </select>
                                             <div class="select_arrow"></div>
@@ -61,7 +61,7 @@
                                             <select v-model="moduleId" name="moduleId">
                                                 <option disabled value="">Designation</option>
                                                 <option v-for="item in designation" :key="item.id">
-                                                    {{ item.id }}
+                                                    {{ item.id }} {{ item.designation_name }}
                                                 </option>
                                             </select>
                                             <div class="select_arrow"></div>
@@ -82,6 +82,7 @@
                                                 <option disabled value="">Module_name</option>
                                                 <option v-for="item in moduledata" :key="item.id">
                                                     {{ item.module_id }}
+                                                    <!-- {{  item.module_name }} -->
                                                 </option>
                                             </select>
                                             <div class="select_arrow"></div>
@@ -92,6 +93,7 @@
                                                 <option disabled value="">Branch</option>
                                                 <option v-for="item in branch" :key="item.id">
                                                     {{ item.branch_id }}
+                                                    <!-- {{ item.branch_name }} -->
                                                 </option>
                                             </select>
                                             <div class="select_arrow"></div>
@@ -136,20 +138,23 @@ export default {
             role: null,
             moduledata: null,
             branch: null,
-            firstName: "",
-            lastName: "",
-            userName: "",
-            email: "",
-            password: "",
-            departmentId: "",
-            roleId: "",
-            designationId: "",
-            moduleId: "",
-            branchId: ""
+                firstName: "",
+                lastName: "",
+                userName: "",
+                email: "",
+                password: "",
+                departmentId: "",
+                roleId: "",
+                designationId: "",
+                moduleId: "",
+                branchId: "",
+           
+            // dpId:""
         };
     },
 
     mounted() {
+
         // Department
         fetch("http://10.140.2.35/cPoint/api/Department/get-department_list")
             .then((response) => response.json())
@@ -203,19 +208,29 @@ export default {
     methods: {
 
         async submittedSignUp() {
-            if (this.firstName && this.email && this.userName && this.departmentId && this.branchId) {
+            // console.log(this.departmentId.split(" "));
+            let depId = this.departmentId.split(" ")
+            let degId = this.designationId.split(" ")
+            console.log(depId[0]);
+
+            if (this.firstName) {
                 let response = await axios.post('http://10.140.2.35/cPoint/api/Account/register', {
                     firstName: this.firstName,
                     lastName: this.lastName,
                     userName: this.userName,
                     email: this.email,
                     password: this.password,
-                    departmentId: this.departmentId,
+                    departmentId: depId[0],
+                    // departmentId: this.departmentId.split(" "),
+                    // departmentId:this.departmentId[0],
                     roleId: this.roleId,
-                    designationId: this.designationId,
+                    // designationId: this.designationId,
+                    designationId: degId[0],
+
                     moduleId: this.moduleId,
                     branchId: this.branchId,
 
+                    // const myArray = text.split(" ");
 
 
                 });
@@ -230,7 +245,7 @@ export default {
 
             }
             else {
-                 alert("Please submit your Information")
+                alert("Please submit your Information")
                 // class'swalDefaultError'
             }
 
@@ -283,9 +298,9 @@ $(function () {
 
 <style>
 body {
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     /* Hide vertical scrollbar */
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     /* Hide horizontal scrollbar */
 }
 
