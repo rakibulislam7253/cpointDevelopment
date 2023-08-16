@@ -84,9 +84,66 @@
                         <!-- Edit modal -->
 
 
+                        <div class="modal fade" id="modal-primary">
+                            <div class="modal-dialog">
+                                <div class="modal-content bg-default">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Update Data</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="card-body">
+
+                                                <div class="form-group">
+                                                    <label>Branch ID</label>
+                                                    <input type="text" style="margin-top:-5px"
+                                                        class="form-control form-control-sm" id="branch_id"
+                                                        v-model="branch_id" placeholder="branch_id">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Branch Name</label>
+                                                    <input type="text" style="margin-top:-5px"
+                                                        class="form-control  form-control-sm" id="branch_name"
+                                                        v-model="branch_name" placeholder="Branch Name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Phone</label>
+                                                    <input type="text" style="margin-top:-5px"
+                                                        class="form-control  form-control-sm" id="addImage" v-model="phone"
+                                                        placeholder="Phone">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Address</label>
+                                                    <input type="text" style="margin-top:-5px"
+                                                        class="form-control  form-control-sm" id="address" v-model="address"
+                                                        placeholder="Address">
+                                                </div>
 
 
 
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"
+                                        @click="saveData(haveID)"> Save Edit</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+
+
+
+                        <!-- add domain button -->
 
                         <div class="card-header">
                             <div>
@@ -98,7 +155,7 @@
                             </button>
                         </div>
                         <!-- check edit part -->
-                        <div>
+                        <!-- <div>
                             <div>
                                 <input type="text" v-model="branch_id" placeholder="branch_id">
                             </div>
@@ -117,11 +174,9 @@
                                     @click="saveData(haveID)">Save</button>
                             </div>
 
-                            <!-- <div>
-                                <button @click="saveData()">Save</button>
-                            </div> -->
+                         
 
-                        </div>
+                        </div> -->
 
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -149,8 +204,8 @@
 
 
                                             <button type="button" class="btn btn-secondary btn-xs" data-toggle="modal"
-                                                data-target="#modal-primary" data-bs-whatever="@mdo"
-                                                style="padding-right:6px" @click="editRow(domain.branch_id)">Edit
+                                                data-target="#modal-primary" style="padding-right:6px"
+                                                @click="editRow(domain.branch_id)">Edit
                                             </button>
 
 
