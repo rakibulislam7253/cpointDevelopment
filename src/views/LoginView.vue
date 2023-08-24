@@ -5,7 +5,7 @@
                 <div class=" my-5">
                     <div class="card-body cardbody-color">
                         <div class="text-center my-4">
-                            <img src="../assets/logo/Logo.png"  style="margin-bottom: 60px; width:65%" alt="profile" />
+                            <img src="../assets/logo/Logo.png" style="margin-bottom: 60px; width:65%" alt="profile" />
                         </div>
                         <!-- INPUT WITH EMAIL -->
 
@@ -53,7 +53,8 @@
                             <div class="text-center">
                                 <button v-on:click="submitFormAd()" class="btn btn-color btn-success btn-sm mb-2">Login with
                                     AD</button>
-                                <button v-on:click="submitForm()" class="btn btn-color btn-primary btn-sm mb-5">Login</button>
+                                <button v-on:click="submitForm()"
+                                    class="btn btn-color btn-primary btn-sm mb-5">Login</button>
                             </div>
                             <div style="color:rgb(41, 125, 221);margin-top:-40px;margin-bottom:60px">
                                 <p style="margin-left:45px; color:black">No Account?<a href="/registration"
@@ -109,9 +110,9 @@ export default {
 
         async submitFormAd() {
 
-            let response =await axios.post('loginWithAd', {
+            let response = await axios.post('loginWithAd', {
                 userName: this.userName,
-                 password: this.password,
+                password: this.password,
 
 
                 headers: {
@@ -136,10 +137,10 @@ export default {
                 userName: this.userName,
                 password: this.password,
             });
-            
+
             // localStorage.setItem('user', JSON.stringify(response))
             localStorage.setItem('token', response.data.jwt)
-            this.$store.dispatch('user',response.data.user)
+            this.$store.dispatch('user', response.data.user)
             this.$router.push('/')
 
         },
@@ -159,10 +160,13 @@ export default {
 
 
 <style>
-body{
-    overflow-y: hidden; /* Hide vertical scrollbar */
-  overflow-x: hidden; /* Hide horizontal scrollbar */
+body {
+    overflow-y: hidden;
+    /* Hide vertical scrollbar */
+    overflow-x: hidden;
+    /* Hide horizontal scrollbar */
 }
+
 .button {
     border: none;
     position: absolute;
@@ -214,5 +218,4 @@ a {
     display: flex;
     justify-content: center;
     margin-bottom: 0px;
-}
-</style> 
+}</style> 

@@ -10,14 +10,17 @@ const routes = [
       {
         path: '/',
         name: 'home',
-        component: HomeView
+        component: HomeView,
+        meta: {
+          needsAuth: true
+        }
       },
       {
         path: '/profile',
         name: 'profil',
         component: Profile
       },
-   
+
       {
         path: '/domaininfo',
         name: 'domaininfo',
@@ -32,7 +35,7 @@ const routes = [
           return import('../views/AboutView.vue')
         }
       },
-      
+
       {
         path: '/gallery',
         name: 'gallery',
@@ -40,7 +43,7 @@ const routes = [
           return import('../views/Gallery.vue')
         }
       },
-     
+
       {
         path: '/calender',
         name: 'calender',
@@ -86,13 +89,15 @@ const routes = [
       return import('../views/Registration.vue')
     }
   },
- 
-  
+
+
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
-})
+});
+
+router.beforeEach()
 
 export default router
