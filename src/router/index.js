@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import MainLayout from '../layout/MainLayout.vue'
 import Profile from '../views/Profile.vue'
+const isuserLoggedIn = false;
 const routes = [
   {
     path: '/',
@@ -33,6 +34,9 @@ const routes = [
         name: 'about',
         component: function () {
           return import('../views/AboutView.vue')
+        },
+        meta: {
+          needsAuth: true
         }
       },
 
@@ -98,6 +102,20 @@ const router = createRouter({
   routes
 });
 
-router.beforeEach()
+router.beforeEach((to, from, next) => {
+  if (to.meta.needsAuth) {
+    if (isuserLoggedIn) {
+
+      next();
+    }
+    else {
+      next('/login');
+    }
+  }
+  else {
+    next();
+  }
+
+})
 
 export default router
