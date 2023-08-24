@@ -96,31 +96,30 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 export default {
-    name:"Home",
-    data(){
-        return{
-            dataShow:"",
+    name: "Home",
+    data() {
+        return {
+            dataShow: "",
         }
-        
+
     },
-    
-     async created() {
+
+    async created() {
         //  const userToken=localStorage.getItem('user')
         // const userTockenParse=JSON.parse(userToken)
         //  console.log(userTockenParse);
 
-            // const response = await axios.get('http://10.140.2.35/cPoint/api/account/refresh-user-token',
-            //  {
-            //                   headers:
-            //                   {
-            //                         Authorization: 'Bearer ' + userTockenParse.data
-            //                   }
-            //             });
-            // this.dataShow = response.data
-            // console.log(response);
+        // const response = await axios.get('refresh-user-token', {
+        //     headers:
+        //     {
+        //         Authorization: 'Bearer ' + localStorage.getItem('jwt')
+        //     }
+        // });
+        // this.dataShow = response.data
+        // console.log(response);
 
-        }
+    }
 }
 </script>

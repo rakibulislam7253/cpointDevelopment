@@ -26,10 +26,14 @@
 
             </li>
 
-            <li class="nav-item dropdown" >
+            <li class="nav-item dropdown">
                 <a class="nav-link " data-toggle="dropdown" href="#">
-                    <img src="../../assets/images/user.png" class="img-circle elevation-2 dropdown" style="width:5%;float:right" />
-                   <p style="float:right;color:black" class="pr-2 text-semibold"> {{ data1.firstName }} {{ data1.lastName }}</p>
+                    <img src="../../assets/images/user.png" class="img-circle elevation-2 dropdown"
+                        style="width:5%;float:right" />
+                    <p v-if="user" style="float:right;color:black" class="pr-2 text-semibold"> {{ user.firstName }} {{
+                        user.lastName
+                    }}</p>
+                    <p v-if="!user" style="float:right;color:black" class="pr-2 text-semibold"> you are not Logged</p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
 
@@ -38,12 +42,14 @@
                         <i class="fas fa-user mr-2"></i> My Profile
                     </a>
 
+
                     <div class="dropdown-divider"></div>
-                    <a href="/login" class="dropdown-item">
+                    <a href="javascript:void(0)" @click="handleClick" class="dropdown-item">
                         <i class="fas fa-sign-out-alt mr-2"></i> Log Out
                     </a>
-                    <div class="dropdown-divider"></div>
 
+
+                    <div class="dropdown-divider"></div>
                     <div class="dropdown-divider"></div>
 
                 </div>
@@ -55,30 +61,41 @@
 <script>
 import axios from "axios";
 
-
+import {mapGetters} from 'vuex'
 export default {
     name: "Nevbar",
     data() {
         return {
-            data1: [],
-
+            // data1: [],
+            // user: null
         }
     },
-
-     async created() {
-        const userToken=localStorage.getItem('user')
-        const userTockenParse=JSON.parse(userToken)
-        //  console.log(userTockenParse.data.jwt);
+    methods: {
+        handleClick(){
+            localStorage.removeItem('token');
+            this.$store.dispatch('user',null)
+            this.$router.push('/login');
+        }
+    },
+    computed:{
+        ...mapGetters(['user'])
+    },
+    async created() {
+        // const userToken=localStorage.getItem('user')
+        // const userTockenParse=JSON.parse(userToken)
+        // console.log("userTockenParse : ", userTockenParse.data.jwt);
         const response = await axios.get('refresh-user-token', {
             headers:
             {
-
-                Authorization: 'Bearer ' + userTockenParse.data.jwt
+                Authorization: 'Bearer ' + localStorage.getItem('token')
             }
         });
-        this.data1 = response.data
-        // console.log(response.data);
-     }
+        this.$store.dispatch('user',response.data);
+        // this.data1 = response.data
+        this.user = response.data
+        console.log(response.data);
+    }
+
 }
 
 </script>

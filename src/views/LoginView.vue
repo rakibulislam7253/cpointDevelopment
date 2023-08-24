@@ -135,19 +135,11 @@ export default {
             let response = await axios.post('login', {
                 userName: this.userName,
                 password: this.password,
-
-
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(this.userName)
-                // withCredentials: true,
             });
-
-            // console.log(this.userName);
-            // console.log(this.password);
-            // console.log(response.data);
-            localStorage.setItem('user', JSON.stringify(response))
+            
+            // localStorage.setItem('user', JSON.stringify(response))
+            localStorage.setItem('token', response.data.jwt)
+            this.$store.dispatch('user',response.data.user)
             this.$router.push('/')
 
         },
@@ -223,4 +215,4 @@ a {
     justify-content: center;
     margin-bottom: 0px;
 }
-</style>
+</style> 

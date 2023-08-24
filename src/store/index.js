@@ -1,17 +1,27 @@
-import { createStore } from 'vuex'
+import Vue from 'vue'
+import Vuex from 'vuex'
+// Vue.use(Vuex)
 
-export default createStore({
-  state: {
-    app: {
-      name: 'Vue AdminLTE',
+const state = {
+  user: null
+};
+const store = new Vuex.Store({
+  state,
+  getters: {
+    user: (state) => {
+      return state.user;
     }
   },
-  getters: {
+  actions: {
+    user(context, user) {
+      context.commit('user', user)
+    }
   },
   mutations: {
+    user(state, user) {
+      state.user = user
+    }
   },
-  actions: {
-  },
-  modules: {
-  }
+  modules: {}
 })
+export default store;
